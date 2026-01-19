@@ -99,7 +99,7 @@ const Landing = () => {
       {/* Footer */}
       <footer className="landing-footer">
         <div className="container">
-          <p>&copy; 2023 Hackaplace. All rights reserved.</p>
+          <p>&copy; 2025 Hackaplace. All rights reserved.</p>
         </div>
       </footer>
     </div>
