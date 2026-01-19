@@ -6,7 +6,7 @@ const InternalHackathonCard = ({ hackathon, isRegistered }) => {
   const navigate = useNavigate();
   const { bookmarks, toggleBookmark } = useBookmarks();
 
-  const isBookmarked = bookmarks.some(b => b.id === hackathon.id && b.type === 'internal');
+  const isBookmarked = bookmarks.some(b => b._id === hackathon._id && b.type === 'internal');
 
   const handleBookmarkClick = (e) => {
     e.stopPropagation();
@@ -17,23 +17,31 @@ const InternalHackathonCard = ({ hackathon, isRegistered }) => {
     if (isRegistered) {
       return; // Do nothing if already registered
     }
-    navigate(`/dashboard/participant/internal-hackathons/${hackathon.id}/join`);
+    navigate(`/dashboard/participant/internal-hackathons/${hackathon._id}/join`);
   };
 
   const handleJoinClick = (e) => {
     e.stopPropagation();
-    navigate(`/dashboard/participant/internal-hackathons/${hackathon.id}/join`);
+    navigate(`/dashboard/participant/internal-hackathons/${hackathon._id}/join`);
   };
 
   const handleDetailsClick = (e) => {
     e.stopPropagation();
-    navigate(`/dashboard/participant/internal-hackathons/${hackathon.id}`);
+    navigate(`/dashboard/participant/internal-hackathons/${hackathon._id}`);
   };
 
   const getStatusClass = (status) => {
-    if (status === 'Ongoing') return 'badge-green';
-    if (status === 'Upcoming') return 'badge-blue';
+    if (status === 'ongoing') return 'badge-green';
+    if (status === 'upcoming') return 'badge-blue';
     return 'badge-orange';
+  };
+
+  const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
   };
 
   return (
@@ -75,7 +83,7 @@ const InternalHackathonCard = ({ hackathon, isRegistered }) => {
 
       <h3 className="card-title">{hackathon.name}</h3>
       <div style={{ fontSize: '0.9rem', color: '#718096', marginBottom: '0.5rem' }}>
-        by <strong>{hackathon.organizer}</strong>
+        by <strong>{hackathon.organizer?.displayName || hackathon.organizer}</strong>
       </div>
 
       <p className="card-description" style={{ marginBottom: '1rem' }}>
@@ -83,8 +91,8 @@ const InternalHackathonCard = ({ hackathon, isRegistered }) => {
       </p>
 
       <div style={{ fontSize: '0.85rem', color: '#4a5568', marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
-        <div>📅 <strong>Start:</strong> {hackathon.startDate}</div>
-        <div>⏳ <strong>Deadline:</strong> {hackathon.deadline}</div>
+        <div>📅 <strong>Start:</strong> {formatDate(hackathon.startDate)}</div>
+        <div>⏳ <strong>Deadline:</strong> {formatDate(hackathon.deadline)}</div>
         <div>👥 <strong>Team:</strong> {hackathon.teamType}</div>
       </div>
 

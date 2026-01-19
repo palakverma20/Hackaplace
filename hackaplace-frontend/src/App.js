@@ -1,6 +1,7 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { BookmarkProvider } from "./context/BookmarkContext";
 
+import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import SelectRole from "./pages/SelectRole";
@@ -48,7 +49,7 @@ function App() {
     <BookmarkProvider>
       <BrowserRouter>
         <Routes>
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/select-role" element={<SelectRole />} />
@@ -89,9 +90,6 @@ function App() {
         <Route path="/dashboard/judge/profile" element={<JudgeProfile />} />
 
         <Route path="/dashboard/admin" element={<AdminDashboard />} />
-
-        {/* Fallback for base dashboard route */}
-        <Route path="/dashboard" element={<Navigate to="/login" replace />} />
 
         <Route path="/events" element={<Events />} />
         <Route path="/external-hackathons" element={<ExternalHackathons />} />

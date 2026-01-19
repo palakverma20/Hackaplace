@@ -7,7 +7,7 @@ const Sidebar = ({ role }) => {
 
   const handleLogout = () => {
     // In a real app, clear auth tokens here
-    navigate('/login');
+    navigate('/');
   };
 
   const isActive = (path) => location.pathname === path;
