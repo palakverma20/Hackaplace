@@ -7,18 +7,31 @@ import ProjectSubmission from '../../../components/dashboard/project/ProjectSubm
 import ProjectEvaluation from '../../../components/dashboard/project/ProjectEvaluation';
 import ProjectTimeline from '../../../components/dashboard/project/ProjectTimeline';
 import { mockProjects } from '../../../data/mockProjects';
+import { deleteProject, getProjects } from '../../../data/projectUtils';
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
   const navigate = useNavigate(); // Add hook
-  const project = mockProjects.find(p => p.projectId === projectId);
+  const projects = getProjects();
+  const project = projects.find(p => p.projectId === projectId);
 
   if (!project) {
     return <Navigate to="/dashboard/participant/projects" replace />;
   }
 
+  const handleDeleteProject = () => {
+    if (window.confirm('Are you sure you want to delete this project? This action cannot be undone.')) {
+      deleteProject(projectId);
+      navigate('/dashboard/participant/projects');
+    }
+  };
+
   return (
-    <DashboardLayout>
+    <DashboardLayout
+      role="participant"
+      title="Project Details"
+      subtitle={`Details for ${project.projectName}`}
+    >
       <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
         <ProjectHeader project={project} />
         
@@ -78,7 +91,10 @@ const ProjectDetails = () => {
             <ProjectSubmission links={project.links} submissionDate={project.submittedOn} />
             <ProjectTimeline timeline={project.timeline} />
             
-            <button style={{ color: '#e53e3e', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', padding: '0.5rem 0' }}>
+            <button
+              onClick={handleDeleteProject}
+              style={{ color: '#e53e3e', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', padding: '0.5rem 0' }}
+            >
                Delete Project
             </button>
           </div>
