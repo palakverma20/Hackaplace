@@ -88,6 +88,96 @@ const HackathonManage = () => {
             </table>
           </div>
         );
+      case 'evaluations':
+        return (
+          <div className="card">
+            <h3>Evaluations</h3>
+            <p>Evaluation management for this hackathon will be displayed here.</p>
+            <div style={{ marginTop: '1rem' }}>
+              <button className="btn-primary">View All Evaluations</button>
+            </div>
+          </div>
+        );
+      case 'settings':
+        return (
+          <div className="card">
+            <h3>Hackathon Settings</h3>
+            <div style={{ marginTop: '1rem', display: 'grid', gap: '1rem' }}>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>Hackathon Name</label>
+                <input
+                  type="text"
+                  defaultValue={hackathon.name}
+                  style={{ width: '100%', padding: '0.5rem', border: '1px solid #ddd', borderRadius: '4px' }}
+                />
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>Description</label>
+                <textarea
+                  defaultValue={hackathon.description}
+                  rows="3"
+                  style={{ width: '100%', padding: '0.5rem', border: '1px solid #ddd', borderRadius: '4px' }}
+                />
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div>
+                  <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>Start Date</label>
+                  <input
+                    type="date"
+                    defaultValue={hackathon.startDate}
+                    style={{ width: '100%', padding: '0.5rem', border: '1px solid #ddd', borderRadius: '4px' }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>End Date</label>
+                  <input
+                    type="date"
+                    defaultValue={hackathon.endDate}
+                    style={{ width: '100%', padding: '0.5rem', border: '1px solid #ddd', borderRadius: '4px' }}
+                  />
+                </div>
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>Mode</label>
+                <select
+                  defaultValue={hackathon.mode}
+                  style={{ width: '100%', padding: '0.5rem', border: '1px solid #ddd', borderRadius: '4px' }}
+                >
+                  <option value="Online">Online</option>
+                  <option value="Offline">Offline</option>
+                  <option value="Hybrid">Hybrid</option>
+                </select>
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>Status</label>
+                <select
+                  defaultValue={hackathon.status}
+                  style={{ width: '100%', padding: '0.5rem', border: '1px solid #ddd', borderRadius: '4px' }}
+                >
+                  <option value="Draft">Draft</option>
+                  <option value="Upcoming">Upcoming</option>
+                  <option value="Ongoing">Ongoing</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </div>
+              <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+                <button className="btn-primary">Save Changes</button>
+                <button
+                  className="btn-secondary"
+                  style={{backgroundColor: '#dc3545', color: 'white' }}
+                  onClick={() => {
+                    if (window.confirm('Are you sure you want to delete this hackathon? This action cannot be undone.')) {
+                      alert('Hackathon deleted successfully');
+                      // In a real app, this would make an API call to delete the hackathon
+                    }
+                  }}
+                >
+                  Delete Hackathon
+                </button>
+              </div>
+            </div>
+          </div>
+        );
       default:
         return <div>Select a tab</div>;
     }

@@ -5,7 +5,6 @@ const { verifyFirebaseToken } = require('../middleware/auth');
 
 const router = express.Router();
 
-// Get all hackathons
 router.get('/', async (req, res) => {
   try {
     const hackathons = await Hackathon.find()

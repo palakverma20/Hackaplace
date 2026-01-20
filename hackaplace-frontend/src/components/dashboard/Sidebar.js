@@ -8,22 +8,17 @@ const Sidebar = ({ role }) => {
 
   const handleLogout = async () => {
     try {
-      // Sign out from Firebase
       await auth.signOut();
-      // Clear local storage
       localStorage.removeItem('user');
-      // Navigate to landing page with replace to prevent back button from going back
       navigate('/', { replace: true });
     } catch (error) {
       console.error('Logout error:', error);
-      // Fallback: still navigate even if logout fails
       navigate('/', { replace: true });
     }
   };
 
   const isActive = (path) => location.pathname === path;
 
-  // Define links for each role
   const getLinks = () => {
     switch (role) {
       case 'participant':
@@ -69,9 +64,9 @@ const Sidebar = ({ role }) => {
   return (
     <aside className="dashboard-sidebar">
       <div className="sidebar-header">
-        <a href="/" className="sidebar-brand">
+        <div className="sidebar-brand">
           🚀 Hackaplace
-        </a>
+        </div>
         <span className="user-role-badge">{role}</span>
       </div>
 

@@ -45,7 +45,6 @@ function ParticipantDashboard() {
       <section className="dashboard-section">
         <h2 className="section-title">Upcoming Deadlines</h2>
         <div className="dashboard-grid">
-           {/* Placeholder for future implementation */}
            <div style={{ padding: '1rem', color: '#666', fontStyle: 'italic' }}>
              No upcoming deadlines. You are all caught up!
            </div>

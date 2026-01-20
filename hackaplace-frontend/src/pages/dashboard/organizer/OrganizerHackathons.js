@@ -30,8 +30,7 @@ const OrganizerHackathons = () => {
       <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'flex-end' }}>
         <button 
           className="btn-primary"
-          onClick={() => navigate('/dashboard/organizer/create-hackathon')}
-        >
+          onClick={() => navigate('/dashboard/organizer/create-hackathon')}>
           + Create New Hackathon
         </button>
       </div>
@@ -60,16 +59,15 @@ const OrganizerHackathons = () => {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1frat', gap: '0.5rem' }}>
               <button 
                 className="btn-secondary"
-                onClick={() => handleManageClick(hackathon.id)}
-              >
+                onClick={() => handleManageClick(hackathon.id)}>
                 Manage
               </button>
-              <button className="btn-secondary" style={{ backgroundColor: '#f0f0f0', border: 'none' }}>
+              {/* <button className="btn-secondary" style={{ backgroundColor: '#f0f0f0', border: 'none' }}>
                 Edit
-              </button>
+              </button> */}
             </div>
           </div>
         ))}
