@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { BookmarkProvider } from "./context/BookmarkContext";
+import ProtectedRoute from "./components/common/ProtectedRoute";
 
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
@@ -55,41 +56,41 @@ function App() {
         <Route path="/select-role" element={<SelectRole />} />
         
         {/* Role-based Dashboard Routes */}
-        <Route path="/dashboard/participant" element={<ParticipantDashboardHome />} />
-        <Route path="/dashboard/participant/profile" element={<ParticipantProfile />} />
-        <Route path="/dashboard/participant/projects" element={<ParticipantProjects />} />
-        <Route path="/dashboard/participant/projects/:projectId" element={<ProjectDetails />} />
-        <Route path="/dashboard/participant/registered-events" element={<ParticipantRegisteredEvents />} />
-        <Route path="/dashboard/participant/event/:eventId" element={<ParticipantEventWorkspace />} />
-        <Route path="/dashboard/participant/internal-hackathons" element={<ParticipantInternalHackathons />} />
-        <Route path="/dashboard/participant/internal-hackathons/:hackathonId" element={<InternalHackathonDetails />} />
-        <Route path="/dashboard/participant/internal-hackathons/:hackathonId/join" element={<JoinEvent />} />
-        <Route path="/dashboard/participant/bookmarks" element={<ParticipantBookmarks />} />
-        <Route path="/dashboard/participant/external" element={<ParticipantExternal />} />
+        <Route path="/dashboard/participant" element={<ProtectedRoute><ParticipantDashboardHome /></ProtectedRoute>} />
+        <Route path="/dashboard/participant/profile" element={<ProtectedRoute><ParticipantProfile /></ProtectedRoute>} />
+        <Route path="/dashboard/participant/projects" element={<ProtectedRoute><ParticipantProjects /></ProtectedRoute>} />
+        <Route path="/dashboard/participant/projects/:projectId" element={<ProtectedRoute><ProjectDetails /></ProtectedRoute>} />
+        <Route path="/dashboard/participant/registered-events" element={<ProtectedRoute><ParticipantRegisteredEvents /></ProtectedRoute>} />
+        <Route path="/dashboard/participant/event/:eventId" element={<ProtectedRoute><ParticipantEventWorkspace /></ProtectedRoute>} />
+        <Route path="/dashboard/participant/internal-hackathons" element={<ProtectedRoute><ParticipantInternalHackathons /></ProtectedRoute>} />
+        <Route path="/dashboard/participant/internal-hackathons/:hackathonId" element={<ProtectedRoute><InternalHackathonDetails /></ProtectedRoute>} />
+        <Route path="/dashboard/participant/internal-hackathons/:hackathonId/join" element={<ProtectedRoute><JoinEvent /></ProtectedRoute>} />
+        <Route path="/dashboard/participant/bookmarks" element={<ProtectedRoute><ParticipantBookmarks /></ProtectedRoute>} />
+        <Route path="/dashboard/participant/external" element={<ProtectedRoute><ParticipantExternal /></ProtectedRoute>} />
 
-        <Route path="/dashboard/organizer" element={<OrganizerDashboard />} />
-        <Route path="/dashboard/organizer/create-hackathon" element={<CreateHackathon />} />
-        <Route path="/dashboard/organizer/hackathons" element={<OrganizerHackathons />} />
-        <Route path="/dashboard/organizer/hackathon/:hackathonId" element={<HackathonManage />} />
-        <Route path="/dashboard/organizer/participants" element={<OrganizerParticipants />} />
-        <Route path="/dashboard/organizer/participants/:hackathonId/team/:teamId" element={<OrganizerTeamDetails />} />
-        <Route path="/dashboard/organizer/submissions" element={<OrganizerSubmissions />} />
-        <Route path="/dashboard/organizer/submissions/:submissionId" element={<OrganizerSubmissionDetails />} />
-        <Route path="/dashboard/organizer/evaluations" element={<OrganizerEvaluations />} />
-        <Route path="/dashboard/organizer/evaluations/:hackathonId" element={<OrganizerHackathonEvaluations />} />
-        <Route path="/dashboard/organizer/evaluations/:hackathonId/submission/:submissionId" element={<OrganizerEvaluationDetails />} />
-        <Route path="/dashboard/organizer/announcements" element={<OrganizerAnnouncements />} />
-        <Route path="/dashboard/organizer/profile" element={<OrganizerProfile />} />
-        
-        <Route path="/dashboard/judge" element={<JudgeDashboard />} />
-        <Route path="/dashboard/judge/hackathons" element={<JudgeAssignedHackathons />} />
-        <Route path="/dashboard/judge/hackathons/:hackathonId/details" element={<JudgeHackathonDetails />} />
-        <Route path="/dashboard/judge/evaluations" element={<JudgeEvaluations />} />
-        <Route path="/dashboard/judge/project/:submissionId" element={<JudgeProjectEvaluation />} />
-        <Route path="/dashboard/judge/completed" element={<JudgeCompletedEvaluations />} />
-        <Route path="/dashboard/judge/profile" element={<JudgeProfile />} />
+        <Route path="/dashboard/organizer" element={<ProtectedRoute><OrganizerDashboard /></ProtectedRoute>} />
+        <Route path="/dashboard/organizer/create-hackathon" element={<ProtectedRoute><CreateHackathon /></ProtectedRoute>} />
+        <Route path="/dashboard/organizer/hackathons" element={<ProtectedRoute><OrganizerHackathons /></ProtectedRoute>} />
+        <Route path="/dashboard/organizer/hackathon/:hackathonId" element={<ProtectedRoute><HackathonManage /></ProtectedRoute>} />
+        <Route path="/dashboard/organizer/participants" element={<ProtectedRoute><OrganizerParticipants /></ProtectedRoute>} />
+        <Route path="/dashboard/organizer/participants/:hackathonId/team/:teamId" element={<ProtectedRoute><OrganizerTeamDetails /></ProtectedRoute>} />
+        <Route path="/dashboard/organizer/submissions" element={<ProtectedRoute><OrganizerSubmissions /></ProtectedRoute>} />
+        <Route path="/dashboard/organizer/submissions/:submissionId" element={<ProtectedRoute><OrganizerSubmissionDetails /></ProtectedRoute>} />
+        <Route path="/dashboard/organizer/evaluations" element={<ProtectedRoute><OrganizerEvaluations /></ProtectedRoute>} />
+        <Route path="/dashboard/organizer/evaluations/:hackathonId" element={<ProtectedRoute><OrganizerHackathonEvaluations /></ProtectedRoute>} />
+        <Route path="/dashboard/organizer/evaluations/:hackathonId/submission/:submissionId" element={<ProtectedRoute><OrganizerEvaluationDetails /></ProtectedRoute>} />
+        <Route path="/dashboard/organizer/announcements" element={<ProtectedRoute><OrganizerAnnouncements /></ProtectedRoute>} />
+        <Route path="/dashboard/organizer/profile" element={<ProtectedRoute><OrganizerProfile /></ProtectedRoute>} />
 
-        <Route path="/dashboard/admin" element={<AdminDashboard />} />
+        <Route path="/dashboard/judge" element={<ProtectedRoute><JudgeDashboard /></ProtectedRoute>} />
+        <Route path="/dashboard/judge/hackathons" element={<ProtectedRoute><JudgeAssignedHackathons /></ProtectedRoute>} />
+        <Route path="/dashboard/judge/hackathons/:hackathonId/details" element={<ProtectedRoute><JudgeHackathonDetails /></ProtectedRoute>} />
+        <Route path="/dashboard/judge/evaluations" element={<ProtectedRoute><JudgeEvaluations /></ProtectedRoute>} />
+        <Route path="/dashboard/judge/project/:submissionId" element={<ProtectedRoute><JudgeProjectEvaluation /></ProtectedRoute>} />
+        <Route path="/dashboard/judge/completed" element={<ProtectedRoute><JudgeCompletedEvaluations /></ProtectedRoute>} />
+        <Route path="/dashboard/judge/profile" element={<ProtectedRoute><JudgeProfile /></ProtectedRoute>} />
+
+        <Route path="/dashboard/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
 
         <Route path="/events" element={<Events />} />
         <Route path="/external-hackathons" element={<ExternalHackathons />} />

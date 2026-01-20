@@ -15,7 +15,6 @@ const Landing = () => {
 
   return (
     <div className="landing">
-      {/* Header */}
       <header className="landing-header">
         <div className="header-content">
           <div className="logo">
@@ -28,7 +27,6 @@ const Landing = () => {
         </div>
       </header>
 
-      {/* Hero Section */}
       <section className="hero">
         <div className="hero-overlay"></div>
         <div className="hero-content">
@@ -38,7 +36,6 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Features Section */}
       <section className="features">
         <div className="container">
           <h3>Why Choose Hackaplace?</h3>
@@ -63,7 +60,6 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* About Section */}
       <section className="about">
         <div className="container">
           <h3>About Hackaplace</h3>
@@ -71,7 +67,6 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Gallery Section */}
       <section className="gallery">
         <div className="container">
           <h3>Hackathon Highlights</h3>
@@ -96,10 +91,9 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="landing-footer">
         <div className="container">
-          <p>&copy; 2025 Hackaplace. All rights reserved.</p>
+          <p>&copy; 2026 Hackaplace. All rights reserved.</p>
         </div>
       </footer>
     </div>

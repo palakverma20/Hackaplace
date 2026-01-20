@@ -1,13 +1,24 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { auth } from '../../firebase';
 
 const Sidebar = ({ role }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleLogout = () => {
-    // In a real app, clear auth tokens here
-    navigate('/');
+  const handleLogout = async () => {
+    try {
+      // Sign out from Firebase
+      await auth.signOut();
+      // Clear local storage
+      localStorage.removeItem('user');
+      // Navigate to landing page with replace to prevent back button from going back
+      navigate('/', { replace: true });
+    } catch (error) {
+      console.error('Logout error:', error);
+      // Fallback: still navigate even if logout fails
+      navigate('/', { replace: true });
+    }
   };
 
   const isActive = (path) => location.pathname === path;
