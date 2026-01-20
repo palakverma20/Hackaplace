@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
+import api from '../../../services/api';
 
 const CreateHackathon = () => {
     const navigate = useNavigate();

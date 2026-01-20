@@ -165,10 +165,16 @@ const HackathonManage = () => {
                 <button
                   className="btn-secondary"
                   style={{backgroundColor: '#dc3545', color: 'white' }}
-                  onClick={() => {
+                  onClick={async () => {
                     if (window.confirm('Are you sure you want to delete this hackathon? This action cannot be undone.')) {
-                      alert('Hackathon deleted successfully');
-                      // In a real app, this would make an API call to delete the hackathon
+                      try {
+                        await api.delete(`/hackathons/${hackathonId}`);
+                        alert('Hackathon deleted successfully');
+                        navigate('/dashboard/organizer/hackathons');
+                      } catch (error) {
+                        console.error('Error deleting hackathon:', error);
+                        alert('Failed to delete hackathon. Please try again.');
+                      }
                     }
                   }}
                 >
